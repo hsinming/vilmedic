@@ -10,7 +10,7 @@ from torchvision.transforms import Resize
 
 def main(args):
     in_files = os.path.join(args.jpgs, '2.0.0', 'files')
-    resized_dir = os.path.join(os.path.dirname(args.jpgs), 'mimic-cxr-images-512')
+    resized_dir = os.path.join(os.path.dirname(args.jpgs), '..', 'mimic-cxr-images-512')
     out_files = os.path.join(resized_dir, '2.0.0', 'files')
     resize = Resize(512)
     # Make mimic-cxr-resized directory
@@ -48,7 +48,7 @@ def main(args):
                                         image = default_loader(image_path)
                                         image = resize(image)
                                         with open(out_image_path, 'wb') as out:
-                                            image.save(out, 'jpg')
+                                            image.save(out)
                                         count_resized += 1
                                         if count_resized % 1000 == 0:
                                             print('Resized {0} images'.format(count_resized))
